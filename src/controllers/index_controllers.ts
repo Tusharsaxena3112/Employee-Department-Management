@@ -60,7 +60,7 @@ export const getEmployeeById = async (
   }
 };
 
-export const postEmployees = async (req: Request, res: Response) => {
+export const postEmployees = async (req: Request, res: Response):Promise<Response>=> {
   const { emp_name, emp_age, emp_dept, emp_salary, emp_experience } = req.body;
   const response: QueryResult = await pool.query(
     "SELECT * FROM employee ORDER BY emp_id ASC"
@@ -85,7 +85,8 @@ export const postEmployees = async (req: Request, res: Response) => {
       },
       time: new Date(),
     });
-  } catch {
+  } catch(err) {
+    console.log(err);
     return res.status(500).json({
       error: "Employee cannot be added",
       time: new Date(),

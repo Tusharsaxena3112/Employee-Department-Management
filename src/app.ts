@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import swaggerUi from "swagger-ui-express";
 
 
-const app: Application = express();
+const app: Application = express(); 
 
 // middlewares
 app.use(express.json());
@@ -26,6 +26,6 @@ app.use(
 
 // Routes
 app.use(routes);
-app.listen(3000,()=>{
-    console.log('Server on port', 3000);
+app.listen(3001,()=>{
+    console.log('Server on port', 3001);
 });

@@ -82,7 +82,8 @@ const postEmployees = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             time: new Date(),
         });
     }
-    catch (_a) {
+    catch (err) {
+        console.log(err);
         return res.status(500).json({
             error: "Employee cannot be added",
             time: new Date(),
@@ -103,7 +104,7 @@ const putEmployees = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             time: new Date(),
         });
     }
-    catch (_b) {
+    catch (_a) {
         return res.status(500).json({
             error: "Cannot Update try next time",
             time: new Date(),
@@ -122,7 +123,7 @@ const deleteEmployees = (req, res) => __awaiter(void 0, void 0, void 0, function
             time: new Date(),
         });
     }
-    catch (_c) {
+    catch (_b) {
         return res.status(500).json({
             error: "Cannot Delete try next time",
             time: new Date(),

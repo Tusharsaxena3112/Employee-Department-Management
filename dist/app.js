@@ -20,7 +20,7 @@ app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.defaul
 }));
 // Routes
 app.use(index_routes_1.default);
-app.listen(3000, () => {
-    console.log('Server on port', 3000);
+app.listen(3001, () => {
+    console.log('Server on port', 3001);
 });
 //# sourceMappingURL=app.js.map
