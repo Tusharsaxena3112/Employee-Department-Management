@@ -1,26 +1,150 @@
 {
-	"components": {
-		"examples": {},
-		"headers": {},
-		"parameters": {},
-		"requestBodies": {},
-		"responses": {},
-		"schemas": {},
-		"securitySchemes": {}
-	},
-	"info": {
-		"title": "employee-management-system",
-		"version": "1.0.0",
-		"license": {
-			"name": "ISC"
-		},
-		"contact": {}
-	},
-	"openapi": "3.0.0",
-	"paths": {},
-	"servers": [
-		{
-			"url": "/"
-		}
-	]
-}
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the API for Employee Management System. You can find all the documentation here.",
+    "version": "1.0.0",
+    "title": "Employee Management System",
+    "termsOfService": "",
+    "contact": {
+      "email": "tushar.saxena_cs18@gla.ac.in",
+      "Name": "Tushar Saxena",
+      "College": "GLA University Mathura"
+    },
+    "license": {
+      "name": "Node.Js",
+      "url": ""
+    }
+  },
+  "host": "localhost 3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Employees",
+      "description": "Everything about Employees"
+    }
+  ],
+  "schemes": ["https", "http"],
+  "paths": {
+    "/employees": {
+      "get": {
+        "tags": ["Employees"],
+        "summary": "Get all the Employees from the Database",
+        "description": "",
+        "operationId": "getEmployees",
+        "produces": ["application/xml", "application/json"],
+        "responses": {
+          "200": {
+            "description": "Entries : Employees"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+      "/employee/:id": {
+        "get": {
+          "tags": ["Employees"],
+          "summary": "Finds Employees by their id's",
+          "description": "",
+          "operationId": "getEmployeeById",
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id field considered to be filtered",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/post": {
+        "post": {
+          "tags": ["Employee"],
+          "summary": "Post the new Employee to the database",
+          "description": "",
+          "operationId": "postEmployeeById",
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Add the employee to the database",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Employee Added Successfully"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/delete/:id": {
+        "delete": {
+          "tags": ["Employee"],
+          "summary": "Delete the employee by their ID",
+          "description": "Deletes the employee",
+          "operationId": "deleteEmployeeById",
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id of the employee to be deleted",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully deleted"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+    "/put/:id": {
+      "put": {
+        "tags": ["Employee"],
+        "summary": "Update the experience of employee by their ID",
+        "description": "Update the employee",
+        "operationId": "updateEmployeeById",
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of the employee to be deleted",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully Update"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+    }
+  }
