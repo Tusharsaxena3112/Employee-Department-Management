@@ -1,13 +1,28 @@
 import express, { Application} from 'express';
 import routes from './routes/index_routes';
 import morgan from 'morgan';
+import swaggerUi from "swagger-ui-express";
+
 
 const app: Application = express();
 
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(morgan('common', { skip: function(req, res) { return res.statusCode < 400 }, stream: __dirname + 'morgan.log' }))
+app.use(morgan('common'));
+
+app.use(express.static("public"));
+
+
+app.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+      swaggerOptions: {
+        url: "/swagger.json",
+      },
+    })
+  );
 
 // Routes
 app.use(routes);
